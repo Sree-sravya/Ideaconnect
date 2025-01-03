@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Idea Submission</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles3.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Idea Submission</h1>
+        <div class="header-buttons">
+            <a href="/individualuserideas" class="button">Past submissions</a>
+            <a href="/logout" class="button">Logout</a>
+        </div>
+    </header>
+    
+    <main>
+        <div class="form-container">
+            <h2>Submit Your Idea</h2>
+            <form id="ideaForm" method="POST" action="/usersubmit">
+                <label for="title">Title of the Idea:</label>
+                <input type="text" id="title" name="title" required>
+                
+                <label for="description">Idea Description:</label>
+                <textarea id="description" name="description" rows="4" required></textarea>
+                
+                <label for="categories">Idea Categories:</label>
+                <select id="categories" name="categories" multiple required>
+                    <option value="tech">Technology</option>
+                    <option value="health">Health</option>
+                    <option value="education">Education</option>
+                    <option value="environment">Environment</option>
+                </select>
+                
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </main>
+    
+   
+    
+   
+    
+</body>
+</html>

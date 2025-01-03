@@ -1,0 +1,193 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center; /* Center-align text in the body */
+}
+
+/* Container for the content */
+.container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    box-sizing: border-box;
+}
+
+/* Heading */
+h1 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #333;
+}
+
+
+
+
+
+
+
+/* Heading */
+h1 {
+    margin-bottom: 20px;
+    font-size: 28px; /* Increase the font size of the heading */
+    color: #333;
+}
+
+
+
+/* Posts Container */
+.posts-container {
+    max-height: 600px; /* Set a maximum height for the scrollable area */
+    overflow-y: auto; /* Enable vertical scrolling */
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Space between posts */
+}
+
+/* Individual Post */
+.post {
+    background-color: #f9f9f9;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.post h2 {
+    margin-top: 0;
+    font-size: 22px; /* Increase the font size for post titles */
+    color: #333;
+}
+
+.post p {
+    font-size: 16px; /* Adjust font size for post content */
+    color: #555;
+    margin-bottom: 15px;
+}
+
+/* Contact Button */
+.contact-button {
+    padding: 10px 15px;
+    background-color: #007bff;
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.contact-button:hover {
+    background-color: #0056b3;
+}
+
+
+
+
+
+
+
+/* Form Labels */
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Form Inputs */
+input[type="text"],
+input[type="password"],
+input[type="email"],
+select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+/* Button */
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Anchor Tags */
+a {
+    display: block;
+    width: 100%;
+    padding: 10px 0;
+    margin: 10px 0;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 16px;
+    transition: background-color 0.3s;
+   
+}
+
+
+a:hover {
+    background-color: #0056b3;
+}
+
+textarea {
+    width: 100%;
+    height: 150px; /* Increase the height to make the textarea bigger */
+    padding: 15px; /* Increase padding for more space inside the textarea */
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 18px; /* Increase the font size for bigger text */
+    resize: vertical;
+}
+
+/* Success Message */
+#successMessage {
+    margin-top: 20px;
+    font-size: 18px;
+    color: green;
+}
+
+.flash-message{
+    padding: 1px;
+    margin: 10px 0;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+}
+
+/* Centering content inside the container
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+*/

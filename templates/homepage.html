@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Idea Sharing Platform</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <h1>IdeaConnect</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#about">About IdeaConnect</a></li>
+                <li><a href="#ideas">Few Ideas</a></li>
+                <li><a href="#feedback">Feedback</a></li>
+                <li><a href="login" class="button">Login</a></li>
+                <li><a href="register" class="button">Register</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="hero">
+
+
+
+        <img src="{{ url_for('static', filename='images/about-image.jpg') }}" alt="Example Image">
+        <div class="text-overlay">
+            <h2>Welcome to IdeaConnect</h2>
+            <p>Post your groundbreaking ideas and connect with investors!</p>
+        </div>
+    
+    </section>
+
+    <section id="about">
+<h1>About IdeaConnect</h1>
+        
+        <p>A platform where innovators meet investors. Share your groundbreaking ideas, whether they’re early-stage concepts or fully developed projects, and connect with investors eager to support and bring your vision to life. We offer a community-driven space where creativity thrives, and collaboration leads to success. Whether you're an entrepreneur looking for backing or an investor seeking the next big thing, you'll find the perfect match here. Join us and turn ideas into reality.</p>
+    </section>
+
+    <section id="ideas">
+        <h2>Few Ideas</h2>
+        <p>Explore the latest ideas from innovators like you!</p>
+        <div class="idea-gallery">
+            <div class="idea">
+                <img src="{{ url_for('static', filename='images/idea1.jpg')}}" alt="Idea 1">
+                <h3>AI ROBO</h3>
+                <p>A compact, intelligent robot designed to assist with everyday tasks at home or in the workplace. Equipped with AI, it can provide reminders, and offer hands-free control of smart devices. Perfect for boosting productivity or enhancing convenience in any environment....
+
+</p>
+            </div>
+            <div class="idea">
+                <img src="{{ url_for('static', filename='images/idea2.jpg')}}" alt="Idea 2">
+                <h3>Greener Planet</h3>
+                <p>Empower communities with renewable energy solutions, reforestation projects, and zero-waste systems. By reducing carbon footprints and embracing sustainable practices, we can restore ecosystems, fight climate change, and create a thriving, greener planet for all....</p>
+            </div>
+            <!-- Add more ideas here -->
+        </div>
+    </section>
+
+    <section id="feedback">
+        <h2>Feedback</h2>
+        <p>Share your thoughts or questions with us!</p>
+        <form id="feedback-form" method="POST" action="/feedback">
+            <input type="text" placeholder="Your Name" id="name" name="name" required>
+            <input type="email" placeholder="Your Email" id="email" name="email" required>
+            <textarea placeholder="Your Feedback" id="feedbackdata" name="feedbackdata" required></textarea>
+            <button class="button" onclick="alertttt()">Submit</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 IdeaConnect. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function alertttt(){
+            alert("Feedback submitted succesfully");
+        }
+        function showAlert(message){
+            if(message){
+                alert(message);
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles2.css') }}">
+</head>
+<body2>
+    <div class="container">
+        {% with messages=get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+            <div class="flash-message">
+                <ul>
+
+                    {% for category,message in messages %}
+                    <li class="{{ category }}">{{message}}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endif %}
+            {% endwith %}
+        <h2>Login</h2>
+        <form id="loginForm" method="POST" action="/loginsubmit">
+            
+            
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+
+            <button type="submit">Login</button>
+        </form>
+        
+    </div>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            //event.preventDefault(); // Prevent the form from submitting the traditional way
+            
+           // const category = document.getElementById('category').value;
+            
+           // if (category === 'user') {
+            //    window.location.href = 'user-dashboard.html';
+           // } else if (category === 'investor') {
+            //    window.location.href = 'investor-dashboard.html';
+           // }
+        });
+    </script>
+</body2>
+</html>

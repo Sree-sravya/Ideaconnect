@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Investor Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles4.css') }}">
+    <style>
+        /* CSS for the overlay/modal box */
+        .overlay {
+            display: none; /* Ensure the overlay is hidden by default */
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80%;
+            max-width: 800px;
+            max-height: 80vh;
+            background-color: rgb(219, 216, 216);
+            color: #000;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            box-sizing: border-box;
+            z-index: 1000;
+            border-radius: 8px;
+            overflow: hidden;
+            flex-direction: column;
+        }
+        .overlay.show {
+            display: block; /* Show the overlay when this class is added */
+            flex-direction: column;
+        }
+        .overlay-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        .overlay-header h2 {
+            margin: 0;
+        }
+        .overlay-close {
+            cursor: pointer;
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: #000;
+        }
+        .overlay-body {
+            max-height: calc(80vh - 60px); /* Adjust to leave space for the header */
+            overflow-y: auto;  /* Enable vertical scrolling if content overflows */
+            word-wrap: break-word;
+        }
+        .overlay-body p {
+            margin: 0;
+            padding-bottom: 10px;
+            text-align: justify;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Investor Dashboard</h1>
+        <div class="header-buttons">
+            <a href="/logout" class="button">Logout</a>
+        </div>
+    </header>
+    
+    <main action="/investor-dashboard">
+        <div class="category-filter">
+            <label for="category-select">Filter by Category:</label>
+            <select id="category-select">
+                <option value="all">All Categories</option>
+                <option value="tech">Technology</option>
+                <option value="health">Health</option>
+                <option value="education">Education</option>
+                <option value="environment">Environment</option>
+            </select>
+        </div>
+        
+        <div class="ideas-container">
+            {% for row in data %}
+            <div class="idea-card" data-category="{{ row[3] }}" data-title="{{ row[1] }}" data-description="{{ row[2] }}" data-mail="{{ row[5] }}">
+                <p><strong>Title:</strong> {{ row[1] }}</p>
+                <p><strong>Short Description:</strong></p>
+                <p>{{ row[2] }}</p>
+                <p><strong>Category:</strong> {{ row[3] }}</p>
+                <button class="contact-button">Contact</button>
+            </div>
+            {% endfor %}
+        </div>
+    </main>
+    
+   
+
+    <!-- Overlay/Modal -->
+    <div id="overlay" class="overlay">
+        <div class="overlay-header">
+            <h2 id="overlay-title"></h2>
+            <button class="overlay-close">&times;</button>
+        </div>
+        <div id="overlay-body" class="overlay-body">
+            <!-- Detailed content will be injected here -->
+        </div>
+    </div>
+
+    <script>
+        // JavaScript to filter ideas based on selected category
+        document.getElementById('category-select').addEventListener('change', function() {
+            const selectedCategory = this.value;
+            const ideaCards = document.querySelectorAll('.idea-card');
+
+            ideaCards.forEach(card => {
+                if (selectedCategory === 'all' || card.dataset.category === selectedCategory) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+
+        // JavaScript to handle the overlay functionality
+        const ideaCards = document.querySelectorAll('.idea-card');
+        const overlay = document.getElementById('overlay');
+        const overlayTitle = document.getElementById('overlay-title');
+        const overlayBody = document.getElementById('overlay-body');
+        const overlayClose = document.querySelector('.overlay-close');
+
+        ideaCards.forEach(card => {
+            card.addEventListener('click', () => {
+                const title = card.getAttribute('data-title');
+                const description = card.getAttribute('data-description');
+                const mail = card.getAttribute('data-mail');
+
+                // Set overlay content
+                overlayTitle.textContent = title;
+                overlayBody.innerHTML = `<p>${description}</p> <p><strong>contact through email:</strong>${mail}<p>`;
+
+                // Show overlay
+                overlay.classList.add('show');
+            });
+        });
+
+        // Close the overlay when the close button is clicked
+        overlayClose.addEventListener('click', () => {
+            overlay.classList.remove('show');
+        });
+
+        // Close the overlay when clicking outside the content area
+        overlay.addEventListener('click', (event) => {
+            if (event.target === overlay) {
+                overlay.classList.remove('show');
+            }
+        });
+    </script>
+</body>
+</html>
